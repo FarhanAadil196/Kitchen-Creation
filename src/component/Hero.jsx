@@ -21,9 +21,9 @@ const Wrapper = styled.div`
 `;
 
 const images = [
-  "/src/assets/1.png",
-  "/src/assets/2.png",
-  "/src/assets/3.png"
+  "/public/1.png",
+  "/public/2.png",
+  "/public/3.png"
 ];
 
 function Hero() {
@@ -40,7 +40,7 @@ function Hero() {
   return (
     <Wrapper backgroundImage={images[currentImage]}>
       <div className="hero">
-        <h1>Home</h1>
+        <h1>{`Home/${window.location.pathname.split("/")[1]}`}</h1>
       </div>
     </Wrapper>
   );

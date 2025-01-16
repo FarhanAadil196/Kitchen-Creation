@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart} from "/src/store/Slices.js";
+import { removeFromCart, clearCart} from "/src/store/slices"; 
 
 const Wrapper = styled.div`
-
   .checkout {
     max-width: 800px;
     margin: 20px auto;
@@ -22,6 +21,7 @@ const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       gap: 15px;
+      padding: 10px;
 
       .item {
         display: flex;
@@ -34,16 +34,14 @@ const Wrapper = styled.div`
         color: #fbf6e9;
 
         img {
-          // height: 50px;
-          width: 60px;
-          object-fit: cover;
+          height: 60px;
+          object-fit: contain;
           border-radius: 5px;
         }
 
         .details {
           flex: 1;
           margin-left: 15px;
-          display:contents;
 
           h4 {
             margin: 0;
@@ -108,6 +106,7 @@ const Checkout = () => {
   const handleClearCart = () => {
     if (items.length > 0) {
       dispatch(clearCart());
+      alert("Order placed successfully!");
     } else {
       alert("Your cart is empty.");
     }
@@ -119,7 +118,9 @@ const Checkout = () => {
         <h1>Checkout</h1>
         <div className="cart-items">
           {items.length === 0 ? (
-            <p>Your cart is empty.</p>
+            <p>
+              Your cart is empty. <a href="/menu">Go back to shop</a>.
+            </p>
           ) : (
             items.map((item, index) => (
               <div className="item" key={index}>
@@ -143,10 +144,13 @@ const Checkout = () => {
           <h3>
             Total: ₹
             {items.length > 0
-              ? items.reduce((total, item) => total + item.mprice * item.quantity, 0)
+              ? items.reduce(
+                  (total, item) => total + item.mprice * item.quantity,
+                  0
+                )
               : 0}
           </h3>
-          <button onClick={handleClearCart}>
+          <button>
             {items.length > 0 ? "Place Order" : "Cart is Empty"}
           </button>
         </div>

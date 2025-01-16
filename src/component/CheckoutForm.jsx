@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { clearCart } from "../store/Slices";
 
 const FormWrapper = styled.div`
   .Form {
@@ -213,7 +214,7 @@ function CheckoutForm() {
               <option value="PayPal">PayPal</option>
             </select>
           </label>
-          <button type="submit">Place Order</button>
+          <button type="submit" onClick={clearCart}>Place Order</button>
         </form>
       )}
                 </div>

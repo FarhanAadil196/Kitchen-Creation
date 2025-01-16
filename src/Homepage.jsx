@@ -1,14 +1,13 @@
 import React from 'react'
 import Navbar from './component/Navbar'
-import Hero from './component/Hero'
 import Menu from './Menu'
-import Scroller from './component/Scroller'
 import Footer from './component/Footer'
+import MainHero from './component/MainHero'
 function Homepage() {
   return (
     <>
     <Navbar />
-    <Hero />
+    <MainHero />
     <Menu />
     {/* <Scroller /> */}
     <Footer />

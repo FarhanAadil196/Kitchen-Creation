@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "./component/Navbar";
 import styled from "styled-components";
-import  aboutbg from "./assets/aboutbg.png";
-import  aboutimg from "./assets/aboutimg.png";
+import  aboutbg from "/public/aboutbg.png";
+import  aboutimg from "/public/aboutimg.png";
 import Footer from "./component/Footer";
 
 

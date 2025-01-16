@@ -161,7 +161,9 @@ const Wrapper = styled.nav`
         .logo {
           width: 100px;
         }
-
+        .cart ul li{
+          justify-content:flex-start;
+        }
         .cart img {
           width: 20px;
           height: 20px;
@@ -293,7 +295,7 @@ function Navbar() {
         <div className="nav-2">
           <img src="/src/assets/logo.png" alt="Logo" className="logo" />
           <ul className="list">
-            <Link to="/home">
+            <Link to="/">
               <li>Home</li>
             </Link>
             <Link to="/category">
@@ -354,7 +356,7 @@ function Navbar() {
               0
             )}
           </p>
-          <Link to="/checkoutpage">
+          <Link to="/checkout">
             <button>Checkout</button>
           </Link>
         </div>
