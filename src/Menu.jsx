@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { addToCart } from "./store/slices.js";
+import { addToCart } from "./store/Slice";
 import { All, Burger, Pizza, Sandwich, Momos, Combos } from "./menu-data";
 
 const Wrapper = styled.div`.Menu {

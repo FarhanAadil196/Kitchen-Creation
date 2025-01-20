@@ -6,7 +6,7 @@ import Homepage from "./Homepage.jsx";
 import Menupage from "./Menupage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store/Store.js";
+import store from "./store/Slice.js";
 import CategoryPage from "./CategoryPage.jsx";
 import CheckoutPage from "./CheckoutPage.jsx";
 import Aboutpage from "./Aboutpage.jsx";

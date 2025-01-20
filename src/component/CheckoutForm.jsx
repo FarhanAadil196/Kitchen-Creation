@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { clearCart } from "../store/Slices";
+import { clearCart } from "../store/Slice";
 
 const FormWrapper = styled.div`
   .Form {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FaClock } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import {
   updateQuantity,
   selectCartItems,
   selectTotalPrice,
-} from "../store/Slices";
+} from "../store/Slice";
 import "../App.css";
 
 const Wrapper = styled.nav`
@@ -319,6 +319,7 @@ function Navbar() {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectTotalPrice);
+  const [cartModal, setCartModal] = useState(false);
 
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart(id));
@@ -330,17 +331,7 @@ function Navbar() {
     }
   };
 
-  let cartModalIsOpen = false;
-  const handleToggleCartModal = () => {
-    const cartModal = document.querySelector(".cart-modal");
-    if (cartModalIsOpen) {
-      cartModal.style.display = "none";
-      cartModalIsOpen = false;
-    } else {
-      cartModal.style.display = "block";
-      cartModalIsOpen = true;
-    }
-  };
+ 
 
   return (
     <Wrapper>
@@ -376,7 +367,7 @@ function Navbar() {
             </Link>
           </ul>
           <div className="cart">
-            <img src="./cart.svg" alt="Cart" onClick={handleToggleCartModal} />
+           <img src="./cart.svg" alt="Cart" onClick={() => setCartModal(!cartModal)} title="View Cart" />
             <span>{cartItems.length}</span>
           </div>
         </div>
@@ -386,9 +377,7 @@ function Navbar() {
         <div className="cart-modal">
           <div className="top">
             <h2>Cart</h2>
-            <button onClick={handleToggleCartModal} className="close">
-              X
-            </button>
+          <button onClick={() => setCartModal(false)} className="close" title="Close Cart Modal">X</button>
           </div>
           <ul>
             {cartItems.map((item) => (
@@ -425,7 +414,7 @@ function Navbar() {
             )}
           </p>
           <Link to="/checkout">
-            <button>Checkout</button>
+            <button onClick={()=> setCartModal(false)}>Checkout</button>
           </Link>
         </div>
       )}
