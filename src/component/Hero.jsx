@@ -4,13 +4,14 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   .hero {
     width: 100%;
-    height: 300px;
+    height: 30vh;
     background: url(${props => props.backgroundImage});
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: contain;
-    background-repeat: round;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     transition: background 2s ease-in-out;
     box-shadow:inset 0 0 0 100rem rgba(0, 0, 0, 0.5);
       h1{
@@ -21,9 +22,9 @@ const Wrapper = styled.div`
 `;
 
 const images = [
-  "/public/1.png",
-  "/public/2.png",
-  "/public/3.png"
+  "./1.png",
+  "./2.png",
+  "./3.png"
 ];
 
 function Hero() {

@@ -12,6 +12,9 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     gap: 10px;
     padding: 10px;
+    @media (max-width: 768px) {
+      padding-bottom: 60px;
+    }
   }
   .left {
     //   width: 30%;
@@ -46,7 +49,7 @@ function Footer() {
       <div className="footer">
         {/* <h1>Footer</h1> */}
         <div className="left">
-          <img src="/src/assets/logo.png" alt="" />
+          <img src="./logo.png" alt="" />
         </div>
         <div className="center">
           <Link to="/home">
@@ -63,13 +66,13 @@ function Footer() {
           </Link>
         </div>
         <div className="right">
-          <img src="/src/assets/google.svg" alt="" />
+          <img src="./google.svg" alt="" />
 
-          <img src="/src/assets/facebook.svg" alt="" />
+          <img src="./facebook.svg" alt="" />
 
-          <img src="/src/assets/linkedin.svg" alt="" />
+          <img src="./linkedin.svg" alt="" />
 
-          <img src="/src/assets/whatsapp.svg" alt="" />
+          <img src="./whatsapp.svg" alt="" />
         </div>
       </div>
     </Wrapper>

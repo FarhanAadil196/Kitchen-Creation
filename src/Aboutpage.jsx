@@ -1,14 +1,12 @@
 import React from "react";
 import Navbar from "./component/Navbar";
 import styled from "styled-components";
-import  aboutbg from "/public/aboutbg.png";
-import  aboutimg from "/public/aboutimg.png";
 import Footer from "./component/Footer";
 
 
 const Wrapper = styled.nav`
   .about-c {
-    background-image: url(${aboutbg});
+    background-image: url("./aboutbg.png");
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -22,7 +20,7 @@ const Wrapper = styled.nav`
   .img-c {
     width: 550px;
     height: 250px;
-    background-image: url(${aboutimg});
+    background-image: url("./aboutimg.png");
     background-size: cover;
     background-position: center;
     clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);

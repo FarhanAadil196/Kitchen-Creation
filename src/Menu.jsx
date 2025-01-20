@@ -11,11 +11,11 @@ const Wrapper = styled.div`.Menu {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: #fbf6e9;
+    background: hsl(90deg 42% 52% / 16%);
     position: relative;
     h1 {
       font-size: 3rem;
-      color: #5DB996;
+      color: black;
     }
     .Menu-cat {
       display: flex;
@@ -23,22 +23,19 @@ const Wrapper = styled.div`.Menu {
       flex-wrap:wrap;
       gap: 10px;
       margin: 20px;
+          justify-content: center;
+    align-items: center;
       button {
-        background-color: #118B50;
-        color: #FBF6E9;
+       border:3px solid #118B50;
+        
         padding: 10px;
         border-radius: 10px;
-        width: auto;
+        width: 80px;
         text-align: center;
-        font-size: 15px;
+        // font-size: 15px;
         font-weight:600;
         transition: background-color 0.5s ease;
-        border:none;
-        &:hover {
-          background-color:#FBF6E9;
-          color: #118B50;
-          cursor: pointer;
-        }
+        cursor: pointer;
       }
     }
     .card-holder {
@@ -53,7 +50,7 @@ const Wrapper = styled.div`.Menu {
 
 
       .menu-card {
-    border: 6px solid #5db996;
+    border: 6px solid hsl(89.71deg 41.7% 51.57%);
     border-radius: 10px;
     // box-shadow: inset 0px 1px 10px 0px black;
     // padding: 10px;
@@ -62,12 +59,13 @@ const Wrapper = styled.div`.Menu {
     align-items: center;
     width: 220px;
     // gap: 15px;
-    height:290px;
+    height: auto;
     flex-direction: column;
 .img-c{
 // background-color:black;
 width:100%;
 height:160px;
+padding: 10px;
 
 img {
           height: 100%;
@@ -80,15 +78,13 @@ img {
           
 .content {
     width: 100%;
-    background: #5db996;
+    background: hsl(89.71deg 41.7% 51.57%);
     padding: 10px;
-    height: 120px;
+    height: 140px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    p{
-    font-size: 20px;
-    }
+    justify-content: space-around;
+   
     .btns {
       display: flex;
       gap: 10px;

@@ -23,6 +23,7 @@ const Wrapper = styled.nav`
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       padding: 0 1rem;
 
       .left {
@@ -46,9 +47,10 @@ const Wrapper = styled.nav`
         justify-content: center;
         align-items: center;
 
-        a{
-        color:black;
-        text-decoration:none;}
+        a {
+          color: black;
+          text-decoration: none;
+        }
 
         h5 {
           padding: 5px;
@@ -100,14 +102,20 @@ const Wrapper = styled.nav`
         }
 
         span {
-          position: absolute;
-          top: -5px;
-          right: -5px;
-          background: red;
-          color: white;
-          border-radius: 50%;
-          padding: 3px;
-          font-size: 12px;
+             position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    /* padding: 4px; */
+    font-size: 12px;
+    width: 20px;
+    display: flex;
+    height: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
         }
       }
     }
@@ -125,6 +133,9 @@ const Wrapper = styled.nav`
         .right h5 {
           font-size: 0.8rem;
         }
+          .right{
+          display:none;
+          }
       }
 
       .nav-2 {
@@ -161,8 +172,8 @@ const Wrapper = styled.nav`
         .logo {
           width: 100px;
         }
-        .cart ul li{
-          justify-content:flex-start;
+        .cart ul li {
+          justify-content: flex-start;
         }
         .cart img {
           width: 20px;
@@ -171,6 +182,8 @@ const Wrapper = styled.nav`
 
         .cart span {
           font-size: 10px;
+          width: 15px;
+    height: 15px;
         }
       }
     }
@@ -194,6 +207,8 @@ const Wrapper = styled.nav`
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: #e3f0af;
+      padding: 10px;
     }
 
     ul {
@@ -204,14 +219,20 @@ const Wrapper = styled.nav`
       justify-content: space-between;
       align-items: center;
       font-family: sans-serif;
+      margin: 10px 0;
 
       li {
         width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    display: flex
+;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
       }
     }
+      p{
+      margin:10px 0;
+      }
 
     ul li img {
       width: 50px;
@@ -227,23 +248,70 @@ const Wrapper = styled.nav`
         color: #fff;
         cursor: pointer;
       }
+        
     }
+      .close{
+        border:none;
+        border-radius:50%;
+        box-shadow:0 0 5px 4px rgba(0,0,0,0.1);
+          }
+        .name{
+            width: 110px;
+          }
 
     @media (max-width: 768px) {
       max-width: 90%;
       .top {
-        font-size: 0.9rem;
+        font-size: 0.7rem;
       }
 
       ul li img {
-        width: 40px;
+        width: 35px;
       }
+        ul li span{
+        font-size: 0.7rem;
+        }
 
       button {
-        font-size: 0.8rem;
+        font-size: 0.6rem;
         padding: 8px;
       }
     }
+  }
+
+  .mnavbar {
+    padding: 10px;
+    width: 100%;
+    background-color:#e3f0af;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    display: none;
+
+    @media (max-width: 768px) {
+    display: block;
+    }
+    ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+   list-style: none;
+
+  a{
+  text-decoration: none;
+  }
+
+   li{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 5px;
+   color: #000;
+   font-size: 0.8rem;
+   }
   }
 `;
 
@@ -285,15 +353,17 @@ function Navbar() {
             </h5>
           </div>
           <div className="right">
-            <Link to='/about'>
+            <Link to="/about">
               <h5>About Us</h5>
             </Link>
             <h5>Contact</h5>
-            <h5>Login/SignUp</h5>
+            <Link to="/login">
+              <h5>Login/SignUp</h5>
+            </Link>
           </div>
         </div>
         <div className="nav-2">
-          <img src="/src/assets/logo.png" alt="Logo" className="logo" />
+          <img src="./logo.png" alt="Logo" className="logo" />
           <ul className="list">
             <Link to="/">
               <li>Home</li>
@@ -306,11 +376,7 @@ function Navbar() {
             </Link>
           </ul>
           <div className="cart">
-            <img
-              src="/src/assets/cart.svg"
-              alt="Cart"
-              onClick={handleToggleCartModal}
-            />
+            <img src="./cart.svg" alt="Cart" onClick={handleToggleCartModal} />
             <span>{cartItems.length}</span>
           </div>
         </div>
@@ -320,32 +386,34 @@ function Navbar() {
         <div className="cart-modal">
           <div className="top">
             <h2>Cart</h2>
-            <button onClick={handleToggleCartModal}>X</button>
+            <button onClick={handleToggleCartModal} className="close">
+              X
+            </button>
           </div>
           <ul>
             {cartItems.map((item) => (
               <li key={item.id}>
                 <img src={item.imgsrc} alt={item.mname} />
                 <span className="name">{item.mname}</span>
-                <span>Quantity: {item.quantity}</span>
+                <div className="quantity">
+                  <button
+                    onClick={() =>
+                      handleUpdateQuantity(item.id, item.quantity + 1)
+                    }
+                  >
+                    +
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button
+                    onClick={() =>
+                      handleUpdateQuantity(item.id, item.quantity - 1)
+                    }
+                  >
+                    -
+                  </button>
+                </div>
                 <span>Price: ₹{item.mprice}</span>
-                <button onClick={() => handleRemoveItem(item.id)}>
-                  Remove
-                </button>
-                <button
-                  onClick={() =>
-                    handleUpdateQuantity(item.id, item.quantity + 1)
-                  }
-                >
-                  +
-                </button>
-                <button
-                  onClick={() =>
-                    handleUpdateQuantity(item.id, item.quantity - 1)
-                  }
-                >
-                  -
-                </button>
+                <button onClick={() => handleRemoveItem(item.id)}>❌</button>
               </li>
             ))}
           </ul>
@@ -361,8 +429,38 @@ function Navbar() {
           </Link>
         </div>
       )}
+
+      <div className="mnavbar">
+        <div className="mnav">
+          <ul>
+            <Link to="/">
+              <li>
+                <img src="./home.svg" alt="" />
+                Home
+              </li>
+            </Link>
+            <Link to="/menu">
+              <li>
+                <img src="./Menu.svg" alt="" />
+                Menu
+              </li>
+            </Link>
+            <Link to="/category">
+              <li>
+                <img src="./Cate.svg" alt="" />
+                Category
+              </li>
+            </Link>
+            <Link to="/login">
+              <li>
+                <img src="./login.svg" alt="" />
+                Login
+              </li>
+            </Link>
+          </ul>
+        </div>
+      </div>
     </Wrapper>
   );
 }
-
 export default Navbar;
