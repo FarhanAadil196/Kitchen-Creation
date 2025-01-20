@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, clearCart} from "/src/store/slices"; 
+import { removeFromCart, clearCart} from "../store/Slices"; 
 
 const Wrapper = styled.div`
   .checkout {
