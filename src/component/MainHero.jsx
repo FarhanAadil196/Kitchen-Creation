@@ -5,7 +5,7 @@ const Wrapper = styled.div`
 .hero{
 height: 84vh;
 width: 100%;
-background-image: url("./bg.png");
+background-image: url("../bg.png");
 background-size: cover;
 background-position: center;
 box-shadow:inset 0 0 0 100rem rgba(0, 0, 0, 0.5);
