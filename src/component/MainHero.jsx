@@ -17,7 +17,7 @@ align-items: center;
 gap: 10px;
 h2{
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
 }
 p{

@@ -133,24 +133,30 @@ img {
       overflow: hidden;
       position:relative;
       gap: 10px;
+
+      @media(max-width:500px){
+        width: 90vw;
+        height: 90vh;
+        gap:0px;
+      }
+
       .Modal-content{
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 10px;
+
+        @media(max-width:500px){
+       width: 90%;
+       flex-direction:column;
+       gap:0;
+       }
         h1{
           font-size: 20px;
       }
-          .close{
-             position: absolute;
-    right: 10px;
-    top: 10px;
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-          }
+          
+    
           .m-info{
           width: 50%;
     height: 100%;
@@ -158,6 +164,7 @@ img {
     gap:10px;
     flex-direction: column;
     justify-content: space-evenly;
+    
           }
       img{
         height: 250px;
@@ -165,6 +172,10 @@ img {
         object-fit: contain;
         background-color: #ccc;
         padding: 10px;
+        @media(max-width:500px){
+          height: 40vh;
+          width: 40vw;
+        }
       }
       .btns{
         display: flex;
@@ -172,23 +183,43 @@ img {
         align-items: center;
         justify-content: center;
         button{
-          background-color: #000;
+          background-color: #118b50;
           color: #fff;
           padding: 10px;          
           border-radius: 10px;          
           width: auto;          
           text-align: center;          
-          font-size: 10px;      
+          font-size: 10px;     
+          border: none; 
 
           &:hover {            
-            background-color: #ccc;
+            border: 2px solid #118b50;
+            background-color: #fff;
             color: black;
             cursor: pointer;
           }
         }
       } 
     }
-  }`; // Your styled-components CSS remains the same
+      .close-btn{
+              width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .close{
+       position: absolute;
+right: 10px;
+top: 10px;
+background: transparent;
+border: none;
+font-size: 20px;
+cursor: pointer;
+    }
+
+    }
+    
+  }
+   
+    `; // Your styled-components CSS remains the same
 
 function Menu() {
   const [Menudata, setMenudata] = useState(All);
@@ -203,6 +234,17 @@ function Menu() {
   const handleFilter = (category) => {
     const filters = { All, Burger, Pizza, Sandwich, Momos, Combos };
     setMenudata(filters[category] || All);
+
+    const buttons = document.querySelectorAll(".Menu-cat button");
+    buttons.forEach((button) => {
+      if (button.textContent === category) {
+        button.style.backgroundColor = "#118b50"; // Active button color
+        button.style.color = "#fbf6e9"; // Active text color
+      } else {
+        button.style.backgroundColor = ""; // Reset other buttons
+        button.style.color = "";
+      }
+    });
   };
 
   const handleViewModal = (item) => {
@@ -224,7 +266,6 @@ function Menu() {
     document.addEventListener("keydown", closeModalOnEscape);
     return () => document.removeEventListener("keydown", closeModalOnEscape);
   }, []);
-
 
   return (
     <Wrapper>
@@ -267,9 +308,11 @@ function Menu() {
       {viewModal && (
         <div className="ViewModal">
           <div className="Modal">
+            <div className="close-btn">
             <button className="close" onClick={() => setViewModal(false)}>
               X
             </button>
+            </div>
             <div className="Modal-content">
               <img src={menupic} alt={menuname} />
               <div className="m-info">
