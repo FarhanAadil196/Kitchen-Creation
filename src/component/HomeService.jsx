@@ -6,6 +6,7 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+    background-color:hsl(90deg 42% 52% / 16%);
     align-items: center;
     flex-direction: column;
     padding: 30px 0;
