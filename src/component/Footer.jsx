@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Wrapper = styled.div`
   .footer {
     width: 100%;
-    background-color: #fbf6e9;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-around;

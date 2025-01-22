@@ -12,6 +12,7 @@ align-items:center;
 justify-content:center;
 flex-wrap:wrap;
 width:100%;
+padding:30px;
 gap:30px;
 }
 .blog-post{
@@ -30,9 +31,9 @@ align-items:center;
 }
 .blog-post-image img{
      border-radius: 50%;
-    height: 200px;
+    height: 150px;
     object-fit: cover;
-    width: 200px;
+    width: 150px;
 }
 .blog-post-content{
 width:100%;

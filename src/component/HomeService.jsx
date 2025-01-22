@@ -19,6 +19,7 @@ const Wrapper = styled.div`
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
+            padding:10px;
             gap: 10px;
         }
     .service-items{
@@ -29,8 +30,7 @@ const Wrapper = styled.div`
         gap: 10px;
         width: 290px;    
         img{
-            width: 300px;
-            height: 150px;
+            height: 100px;
             object-fit: contain;
         }
             a{

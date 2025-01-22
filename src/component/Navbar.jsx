@@ -21,7 +21,7 @@ const Wrapper = styled.nav`
       width: 100%;
       height: 50px;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       flex-wrap: wrap;
       padding: 0 1rem;
@@ -63,7 +63,7 @@ const Wrapper = styled.nav`
       width: 100%;
       height: 50px;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       padding: 0 1rem;
       background: #e3f0af;
@@ -367,9 +367,9 @@ function Navbar() {
             </Link>
           </ul>
           <div className="cart">
-           <img src="./cart.svg" alt="Cart" onClick={() => setCartModal(!cartModal)} title="View Cart" />
-            <span>{cartItems.length}</span>
-          </div>
+  <img src="./cart.svg" alt="Cart"  onClick={() => setCartModal(!cartModal)}title="View Cart" />
+  <span>{cartItems.length}</span>
+</div>
         </div>
       </div>
 

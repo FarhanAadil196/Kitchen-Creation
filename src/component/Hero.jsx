@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     background-position: center;
     transition: background 2s ease-in-out;
     box-shadow:inset 0 0 0 100rem rgba(0, 0, 0, 0.5);
-      h1{
+      h2{
       color:white;
       }
   }
@@ -41,7 +41,7 @@ function Hero() {
   return (
     <Wrapper backgroundImage={images[currentImage]}>
       <div className="hero">
-        <h1>{`Home/${window.location.pathname.split("/")[1]}`}</h1>
+        <h2>{`Home/${window.location.pathname.split("/")[1]}`}</h2>
       </div>
     </Wrapper>
   );

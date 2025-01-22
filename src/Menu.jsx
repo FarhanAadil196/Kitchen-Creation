@@ -44,6 +44,7 @@ const Wrapper = styled.div`.Menu {
       border-radius: 10px;
       padding: 10px;
       gap: 10px;
+      width:90%;
       flex-wrap: wrap;
       align-items: center;
           justify-content: space-evenly;
