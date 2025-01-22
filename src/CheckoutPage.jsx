@@ -12,7 +12,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-around;
     flex-wrap:wrap;
-    flex-direction:column-reverse;
+    // flex-direction:column-reverse;
   }
 `;
 

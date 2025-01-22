@@ -6,11 +6,13 @@ import { removeFromCart, clearCart} from "../store/Slice";
 const Wrapper = styled.div`
   .checkout {
     max-width: 800px;
-    margin: 20px auto;
+    margin: 2rem auto;
     padding: 20px;
     background: #fbf6e9;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position:sticky;
+    top:0;
 
     h1 {
       color: #118b50;
@@ -32,9 +34,10 @@ const Wrapper = styled.div`
         padding: 10px;
         border-radius: 10px;
         color: #fbf6e9;
-
+        gap: 10px;
         img {
-          height: 60px;
+        width: 90px;
+          height: 90px;
           object-fit: contain;
           border-radius: 5px;
         }

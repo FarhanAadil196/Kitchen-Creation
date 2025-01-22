@@ -45,11 +45,6 @@ const Wrapper = styled.div`
       font-size: 15px;
       transition: background-color 0.5s ease;
       border: none;
-      &:hover {
-        color: #118b50;
-        background-color: #fbf6e9;
-        cursor: pointer;
-      }
     }
     .review {
       display: flex;
@@ -83,7 +78,7 @@ function Scroller() {
             className="prev btn"
             onClick={() => {
               const scroller = document.querySelector(".scroller");
-              scroller.scrollLeft -= 300;
+              scroller.scrollLeft -= 350;
             }}
           >
             ⬅
@@ -92,7 +87,7 @@ function Scroller() {
             className="next btn"
             onClick={() => {
               const scroller = document.querySelector(".scroller");
-              scroller.scrollLeft += 300;
+              scroller.scrollLeft += 350;
             }}
           >
             ➡

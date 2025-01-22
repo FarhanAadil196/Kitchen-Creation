@@ -1,5 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Wrapper = Styled.div`
 .blog-t{
@@ -98,7 +99,7 @@ function HomeBlog() {
     <div className="blog-post-content">
       <h2>{item.title}</h2>
       <p>{item.content}</p>
-      <a href={item.link}><button>Read More</button></a>
+      <Link to="/blogs"><button>Read More</button></Link>
     </div>
   </div>
 ))}

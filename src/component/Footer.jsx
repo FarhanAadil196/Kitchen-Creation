@@ -47,7 +47,6 @@ function Footer() {
   return (
     <Wrapper>
       <div className="footer">
-        {/* <h1>Footer</h1> */}
         <div className="left">
           <img src="./logo.png" alt="" />
         </div>
@@ -58,10 +57,10 @@ function Footer() {
           <Link to="/menu">
             <li>Menu</li>
           </Link>
-          <Link to="/home">
+          <Link to="/category">
             <li>Category</li>
           </Link>
-          <Link to="/home">
+          <Link to="/order">
             <li>Order</li>
           </Link>
         </div>

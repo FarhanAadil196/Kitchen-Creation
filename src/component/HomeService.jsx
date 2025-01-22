@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
 .services{
@@ -86,7 +87,7 @@ function HomeService() {
                         <img src={item.image} alt={item.service} />
                         <h3>{item.service}</h3>
                         <p>{item.content}</p>
-                        <a href="#">{item.link}</a>
+                        <Link to="/services">{item.link}</Link>
                     </div>
                 ))}
             </div>

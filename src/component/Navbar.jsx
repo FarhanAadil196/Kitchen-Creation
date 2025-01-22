@@ -12,7 +12,7 @@ import {
 import "../App.css";
 
 const Wrapper = styled.nav`
-  .navbar {
+ .navbar {
     width: 100%;
     background: #e3f0af;
     font-family: sans-serif;
@@ -230,6 +230,11 @@ const Wrapper = styled.nav`
     align-items: center;
       }
     }
+      .quantity{
+      display: flex;
+    gap: 5px;
+    align-items: center;
+      }
       p{
       margin:10px 0;
       }
@@ -312,14 +317,13 @@ const Wrapper = styled.nav`
    color: #000;
    font-size: 0.8rem;
    }
-  }
-`;
+  }`;
 
 function Navbar() {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectTotalPrice);
-  const [cartModal, setCartModal] = useState(false);
+  const [cartModal, setCartModal] = useState(false); // Ensure this state controls modal visibility
 
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart(id));
@@ -330,8 +334,6 @@ function Navbar() {
       dispatch(updateQuantity({ id, quantity }));
     }
   };
-
- 
 
   return (
     <Wrapper>
@@ -367,55 +369,72 @@ function Navbar() {
             </Link>
           </ul>
           <div className="cart">
-  <img src="./cart.svg" alt="Cart"  onClick={() => setCartModal(!cartModal)}title="View Cart" />
-  <span>{cartItems.length}</span>
-</div>
+            <img
+              src="./cart.svg"
+              alt="Cart"
+              onClick={() => setCartModal(!cartModal)} // Toggle cart modal visibility
+              title="View Cart"
+            />
+            <span>{cartItems.length}</span>
+          </div>
         </div>
       </div>
 
-      {cartItems.length > 0 && (
+      {cartModal && ( // Show the modal when cartModal is true
         <div className="cart-modal">
           <div className="top">
             <h2>Cart</h2>
-          <button onClick={() => setCartModal(false)} className="close" title="Close Cart Modal">X</button>
+            <button
+              onClick={() => setCartModal(false)}
+              className="close"
+              title="Close Cart Modal"
+            >
+              X
+            </button>
           </div>
-          <ul>
-            {cartItems.map((item) => (
-              <li key={item.id}>
-                <img src={item.imgsrc} alt={item.mname} />
-                <span className="name">{item.mname}</span>
-                <div className="quantity">
-                  <button
-                    onClick={() =>
-                      handleUpdateQuantity(item.id, item.quantity + 1)
-                    }
-                  >
-                    +
-                  </button>
-                  <span>{item.quantity}</span>
-                  <button
-                    onClick={() =>
-                      handleUpdateQuantity(item.id, item.quantity - 1)
-                    }
-                  >
-                    -
-                  </button>
-                </div>
-                <span>Price: ₹{item.mprice}</span>
-                <button onClick={() => handleRemoveItem(item.id)}>❌</button>
-              </li>
-            ))}
-          </ul>
-          <p>
-            Total: ₹
-            {cartItems.reduce(
-              (total, item) => total + item.mprice * item.quantity,
-              0
-            )}
-          </p>
-          <Link to="/checkout">
-            <button onClick={()=> setCartModal(false)}>Checkout</button>
-          </Link>
+          {cartItems.length > 0 ? (
+            <>
+              <ul>
+                {cartItems.map((item) => (
+                  <li key={item.id}>
+                    <img src={item.imgsrc} alt={item.mname} />
+                    <span className="name">{item.mname}</span>
+                    <div className="quantity">
+                      <button
+                        onClick={() =>
+                          handleUpdateQuantity(item.id, item.quantity + 1)
+                        }
+                      >
+                        +
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button
+                        onClick={() =>
+                          handleUpdateQuantity(item.id, item.quantity - 1)
+                        }
+                      >
+                        -
+                      </button>
+                    </div>
+                    <span>Price: ₹{item.mprice}</span>
+                    <button onClick={() => handleRemoveItem(item.id)}>❌</button>
+                  </li>
+                ))}
+              </ul>
+              <p>
+                Total: ₹
+                {cartItems.reduce(
+                  (total, item) => total + item.mprice * item.quantity,
+                  0
+                )}
+              </p>
+              <Link to="/checkout">
+                <button onClick={() => setCartModal(false)}>Checkout</button>
+              </Link>
+            </>
+          ) : (
+            <p>Your cart is empty.</p>
+          )}
         </div>
       )}
 
@@ -452,4 +471,5 @@ function Navbar() {
     </Wrapper>
   );
 }
+
 export default Navbar;

@@ -14,7 +14,6 @@ const Wrapper = styled.div`.Menu {
     background: hsl(90deg 42% 52% / 16%);
     position: relative;
     h1 {
-      font-size: 3rem;
       color: black;
     }
     .Menu-cat {

@@ -5,6 +5,7 @@ import { clearCart } from "../store/Slice";
 const FormWrapper = styled.div`
   .Form {
     max-width: 600px;
+    width: 100%;
     margin: 2rem auto;
     padding: 2rem;
     border: 1px solid #ddd;

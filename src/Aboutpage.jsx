@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./component/Navbar";
 import styled from "styled-components";
+import Hero from "./component/Hero";
 import Footer from "./component/Footer";
 
 
@@ -35,6 +36,7 @@ function Aboutpage() {
   return (
     <Wrapper>
       <Navbar />
+      <Hero />
       <div className="about-c">
         <div className="img-c">
         </div>
