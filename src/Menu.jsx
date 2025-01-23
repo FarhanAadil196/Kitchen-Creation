@@ -91,19 +91,16 @@ img {
       align-items: center;
       justify-content: center;
       button {
-        color: #118B50;
-     background-color: #FBF6E9;
-        padding: 10px;
-        border-radius: 10px;
-        width: auto;
-        border:none;
-        text-align: center;
-        font-size: 14px;
-        &:hover {
-          background-color: #118B50;
-         color: #FBF6E9;
-          cursor: pointer;
-        }
+           color: #118B50;
+    background-color: #FBF6E9;
+    padding: 5px;
+    border-radius: 5px;
+    width: auto;
+    border: none;
+    text-align: center;
+    /* font-size: 14px; */
+    cursor: pointer;
+
       }
     }
 }
@@ -292,7 +289,9 @@ function Menu() {
                   <h3>{item.mname}</h3>
                   <p>₹{item.mprice}</p>
                   <div className="btns">
-                    <button onClick={() => handleViewModal(item)}>👁</button>
+                    <button onClick={() => handleViewModal(item)}>
+                      <img src="./eye.svg" alt="" />
+                    </button>
                     <button onClick={() => handleAddToCart(item)}>
                       Add to cart
                     </button>

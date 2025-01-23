@@ -67,29 +67,29 @@ const Blogdata =  [
   {
     id: 1,
     imgsrc: "../blog1.jfif",
-    title: "Blog Post Title",
-    content: "Blog post content goes here.",
-    link: "Read More",
+    title: "Spicy",
+    content: "We serve spicy foods for you can Customize the spice level",
+    link: "VieW More",
   },
   {
     id: 2,
     imgsrc: "../blog2.jfif",
-    title: "Blog Post Title", 
-    content: "Blog post content goes here.",
+    title: "Non Veg", 
+    content: "We serve non veg foods for you can Customize the spice level",
     link: "Read More",
   },
   {
     id: 3,
     imgsrc: "../blog3.jfif",
-    title: "Blog Post Title",
-    content: "Blog post content goes here.",
+    title: "Fully Veg",
+    content: "We serve fully veg foods for you can Satisfy the inner vegan",
     link: "Read More",
     },
 ]
 function HomeBlog() {
   return (
     <Wrapper>
-      <h2 className='blog-t'>Our Blog</h2>
+      <h2 className='blog-t'>We Serve</h2>
    <div className="home-blog">
    {Blogdata.map((item) => (
   <div key={item.id} className="blog-post">
