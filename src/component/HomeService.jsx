@@ -80,7 +80,7 @@ function HomeService() {
   return (
     <Wrapper>
         <div className="services">
-            <h2>Amenities</h2>
+            <h1>Amenities</h1>
             <div className="service-c">
                 {Servicedata.map((item) => (
                     <div className="service-items" key={item.id}>

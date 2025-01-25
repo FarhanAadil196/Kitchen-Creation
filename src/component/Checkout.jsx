@@ -153,9 +153,7 @@ const Checkout = () => {
                 )
               : 0}
           </h3>
-          <button>
-            {items.length > 0 ? "Place Order" : "Cart is Empty"}
-          </button>
+          
         </div>
       </div>
     </Wrapper>

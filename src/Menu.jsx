@@ -50,22 +50,21 @@ const Wrapper = styled.div`.Menu {
 
 
       .menu-card {
-    border: 6px solid hsl(89.71deg 41.7% 51.57%);
+    // border: 6px solid hsl(89.71deg 41.7% 51.57%);
     border-radius: 10px;
-    // box-shadow: inset 0px 1px 10px 0px black;
-    // padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 220px;
-    // gap: 15px;
+    width: 190px;
     height: auto;
+        box-shadow: 0 0 5px 0px #00000063;
     flex-direction: column;
 .img-c{
-// background-color:black;
 width:100%;
-height:160px;
+height:150px;
+background-color:grey;
 padding: 10px;
+border-radius: 10px;
 
 img {
           height: 100%;
@@ -77,9 +76,9 @@ img {
         
           
 .content {
-    width: 100%;
-    background: hsl(89.71deg 41.7% 51.57%);
-    padding: 10px;
+       width: 100%;
+    /* background: hsl(89.71deg 41.7% 51.57%); */
+    /* padding: 10px; */
     height: 140px;
     display: flex;
     flex-direction: column;
@@ -90,19 +89,53 @@ img {
       gap: 10px;
       align-items: center;
       justify-content: center;
-      button {
-           color: #118B50;
-    background-color: #FBF6E9;
-    padding: 5px;
-    border-radius: 5px;
-    width: auto;
-    border: none;
-    text-align: center;
-    /* font-size: 14px; */
-    cursor: pointer;
+      /* From Uiverse.io by andrew-demchenk0 */ 
 
-      }
     }
+      .button {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #34974d;
+  background-color: #3aa856;
+}
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+.button .button__text {
+  transform: translateX(30px);
+  color: #fff;
+  font-weight: 600;
+}
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: #34974d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button:hover {
+  background: #34974d;
+}
+.button:hover .button__text {
+  color: transparent;
+}
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+.button:active .button__icon {
+  background-color: #2e8644;
+}
+.button:active {
+  border: 1px solid #2e8644;
+}
 }
       }
     }
@@ -210,14 +243,13 @@ background: transparent;
 border: none;
 font-size: 20px;
 cursor: pointer;
-    }
+    } 
 
     }
     
   }
    
-    `; // Your styled-components CSS remains the same
-
+    `;
 function Menu() {
   const [Menudata, setMenudata] = useState(All);
   const [viewModal, setViewModal] = useState(false);
@@ -233,12 +265,13 @@ function Menu() {
     setMenudata(filters[category] || All);
 
     const buttons = document.querySelectorAll(".Menu-cat button");
+    
     buttons.forEach((button) => {
       if (button.textContent === category) {
-        button.style.backgroundColor = "#118b50"; // Active button color
-        button.style.color = "#fbf6e9"; // Active text color
+        button.style.backgroundColor = "#118b50";
+        button.style.color = "#fbf6e9";
       } else {
-        button.style.backgroundColor = ""; // Reset other buttons
+        button.style.backgroundColor = "";
         button.style.color = "";
       }
     });
@@ -283,17 +316,23 @@ function Menu() {
             Menudata.map((item) => (
               <div className="menu-card" key={item.id}>
                 <div className="img-c">
-                  <img src={item.imgsrc} alt={item.mname} />
+                  <img
+                    src={item.imgsrc}
+                    alt={item.mname}
+                    onClick={() => handleViewModal(item)}
+                  />
                 </div>
                 <div className="content">
                   <h3>{item.mname}</h3>
                   <p>₹{item.mprice}</p>
                   <div className="btns">
-                    <button onClick={() => handleViewModal(item)}>
-                      <img src="./eye.svg" alt="" />
-                    </button>
-                    <button onClick={() => handleAddToCart(item)}>
-                      Add to cart
+                    <button
+                      type="button"
+                      class="button"
+                      onClick={() => handleAddToCart(item)}
+                    >
+                      <span class="button__text">Add Item</span>
+                      <span class="button__icon">+</span>
                     </button>
                   </div>
                 </div>
@@ -308,9 +347,9 @@ function Menu() {
         <div className="ViewModal">
           <div className="Modal">
             <div className="close-btn">
-            <button className="close" onClick={() => setViewModal(false)}>
-              X
-            </button>
+              <button className="close" onClick={() => setViewModal(false)}>
+                X
+              </button>
             </div>
             <div className="Modal-content">
               <img src={menupic} alt={menuname} />
@@ -320,6 +359,8 @@ function Menu() {
                 <p>{menudesc}</p>
                 <div className="btns">
                   <button
+                    type="button"
+                    class="button"
                     onClick={() =>
                       handleAddToCart({
                         mname: menuname,
@@ -328,7 +369,8 @@ function Menu() {
                       })
                     }
                   >
-                    Add to cart
+                    <span class="button__text">Add Item</span>
+                    <span class="button__icon">+</span>
                   </button>
                 </div>
               </div>

@@ -6,7 +6,7 @@ const FormWrapper = styled.div`
   .Form {
     max-width: 600px;
     width: 100%;
-    margin: 2rem auto;
+    margin: 1rem auto;
     padding: 2rem;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -39,6 +39,7 @@ const FormWrapper = styled.div`
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 1rem;
+        outline: none;
       }
 
       textarea {
@@ -87,11 +88,10 @@ const FormWrapper = styled.div`
 function CheckoutForm() {
   const [formData, setFormData] = useState({
     fullName: "",
-    email: "",
     address: "",
     city: "",
     postalCode: "",
-    country: "",
+    phoneNumber: "",
     paymentMethod: "",
   });
 
@@ -106,34 +106,34 @@ function CheckoutForm() {
     e.preventDefault();
     if (
       formData.fullName &&
-      formData.email &&
       formData.address &&
       formData.city &&
       formData.postalCode &&
-      formData.country &&
+      formData.phoneNumber &&
       formData.paymentMethod
     ) {
       setSubmitted(true);
+      clearCart(); // Clear the cart after successful submission
     } else {
-      alert("Please fill in all fields.");
+      alert("Please fill in all required fields correctly.");
     }
   };
 
   return (
     <FormWrapper>
-        <div className="Form">
-
-      <h2>Checkout Form</h2>
-      {submitted ? (
-        <div>
-          <h3>Order Confirmed!</h3>
-          <p>Thank you for your purchase, {formData.fullName}!</p>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Full Name
+      <div className="Form">
+        <h2>Checkout Form</h2>
+        {submitted ? (
+          <div>
+            <h3>Order Confirmed!</h3>
+            <p>Thank you for your purchase, {formData.fullName}!</p>
+          </div>
+          
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="fullName">Full Name
             <input
+              id="fullName"
               type="text"
               name="fullName"
               value={formData.fullName}
@@ -141,84 +141,74 @@ function CheckoutForm() {
               placeholder="Enter your full name"
               required
             />
-          </label>
-          <label>
-            Email Address
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              required
-            />
-          </label>
-          <label>
-            Address
-            <textarea
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              placeholder="Enter your address"
-              rows="3"
-              required
+            </label>
+            
+
+            <label>
+              Address
+              <textarea
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                placeholder="Enter your address"
+                rows="3"
+                required
               ></textarea>
-          </label>
-          <label>
-            City
-            <input
-              type="text"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-              placeholder="Enter your city"
-              required
-            />
-          </label>
-          <label>
-            Postal Code
-            <input
-              type="text"
-              name="postalCode"
-              value={formData.postalCode}
-              onChange={handleChange}
-              placeholder="Enter your postal code"
-              required
-            />
-          </label>
-          <label>
-            Country
-            <select
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select Country</option>
-              <option value="India">India</option>
-              <option value="USA">USA</option>
-              <option value="Canada">Canada</option>
-              <option value="UK">UK</option>
-            </select>
-          </label>
-          <label>
-            Payment Method
-            <select
-              name="paymentMethod"
-              value={formData.paymentMethod}
-              onChange={handleChange}
-              required
+            </label>
+            <label>
+              City
+              <input
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                placeholder="Enter your city"
+                required
+              />
+            </label>
+            <label>
+              Postal Code
+              <input
+                type="text"
+                name="postalCode"
+                value={formData.postalCode}
+                onChange={handleChange}
+                placeholder="Enter your postal code"
+                required
+              />
+            </label>
+            <label>
+              Phone Number
+              <input
+                type="text"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                placeholder="Enter your phone number"
+                required
+              />
+            </label>
+
+            <label>
+              Payment Method
+              <select
+                name="paymentMethod"
+                value={formData.paymentMethod}
+                onChange={handleChange}
+                required
               >
-              <option value="">Select Payment Method</option>
-              <option value="Credit Card">Credit Card</option>
-              <option value="Debit Card">Debit Card</option>
-              <option value="PayPal">PayPal</option>
-            </select>
-          </label>
-          <button type="submit" onClick={clearCart}>Place Order</button>
-        </form>
-      )}
-                </div>
+                <option value="">Select Payment Method</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="PayPal">PayPal</option>
+              </select>
+            </label>
+            <button type="submit" onClick={clearCart}>
+              Place Order
+            </button>
+          </form>
+        )}
+      </div>
     </FormWrapper>
   );
 }

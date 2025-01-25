@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 const Wrapper = styled.div`
   .footer {
     width: 100%;
-    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 10px;
-    padding: 10px;
+    background-color: #3aa856;  /* Dark Green */
+    color: white;
+    padding: 20px;
     @media (max-width: 768px) {
       padding-bottom: 60px;
     }

@@ -27,9 +27,14 @@ const Wrapper = styled.div`
     gap: 10px;
     width: 300px;
     input {
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid grey;
+          padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid;
+    outline: none;
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
     }
     button {
       padding: 10px;
@@ -40,6 +45,10 @@ const Wrapper = styled.div`
       cursor: pointer;
     }
   }
+    .button{
+      color: #5db996;
+      cursor: pointer;
+    }
 }
 
 #signup{
@@ -72,7 +81,7 @@ const loginform = () => {
      <div className="login" id="login">
   <h1>Log In</h1>
   <form>
-    <label htmlFor="username">email:</label>
+    <label htmlFor="username">Email:</label>
     <input type="email" id="loginusername" name="username" required />
     <label htmlFor="password">Password:</label>
     <input type="password" id="loginpassword" name="password" required />

@@ -9,10 +9,7 @@ const Wrapper = styled.div`
     background-color: #fbf6e9;
     // border-radius: 10px;
   }
-  h2 {
-    color: #5db996;
-    font-size: 3rem;
-    font-weight: bold;
+  h1 {
     text-align: center;
   }
   .scroller {
@@ -72,13 +69,13 @@ function Scroller() {
   return (
     <Wrapper>
       <div className="review-scroll">
-        <h2>Customer Reviews</h2>
+        <h1>Customer Reviews</h1>
         <div className="scroller">
           <button
             className="prev btn"
             onClick={() => {
               const scroller = document.querySelector(".scroller");
-              scroller.scrollLeft -= 350;
+              scroller.scrollLeft -= 335;
             }}
           >
             ⬅
@@ -87,7 +84,7 @@ function Scroller() {
             className="next btn"
             onClick={() => {
               const scroller = document.querySelector(".scroller");
-              scroller.scrollLeft += 350;
+              scroller.scrollLeft += 335;
             }}
           >
             ➡

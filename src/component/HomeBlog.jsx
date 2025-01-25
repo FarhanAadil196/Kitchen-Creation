@@ -89,7 +89,7 @@ const Blogdata =  [
 function HomeBlog() {
   return (
     <Wrapper>
-      <h2 className='blog-t'>We Serve</h2>
+      <h1 className='blog-t'>We Serve</h1>
    <div className="home-blog">
    {Blogdata.map((item) => (
   <div key={item.id} className="blog-post">
