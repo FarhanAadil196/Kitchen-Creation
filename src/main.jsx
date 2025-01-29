@@ -13,7 +13,8 @@ import Aboutpage from "./Aboutpage.jsx";
 import Login from "./Login.jsx";
 import ServicePage from "./ServicePage.jsx";
 import BlogPage from "./BlogPage.jsx";
-import PaymentComponent from "./Payment.jsx";
+import ContactPage from "./ContactPage.jsx";
+import Users from "./Users.jsx";
 
 
 createRoot(document.getElementById("root")).render(
@@ -29,7 +30,8 @@ createRoot(document.getElementById("root")).render(
           <Route path="/login" element={<Login/>} />
           <Route path="/services" element={<ServicePage/>} />
           <Route path="/blogs" element={<BlogPage />} />
-          <Route path="/payment" element={<PaymentComponent />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </BrowserRouter>
     </Provider>

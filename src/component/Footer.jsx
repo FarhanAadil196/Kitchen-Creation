@@ -10,11 +10,12 @@ const Wrapper = styled.div`
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 10px;
-    background-color: #3aa856;  /* Dark Green */
+     background: #e3f0af;
     color: white;
     padding: 20px;
     @media (max-width: 768px) {
-      padding-bottom: 60px;
+              padding: 0;
+        padding-bottom: 70px;
     }
   }
   .left {

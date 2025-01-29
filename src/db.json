@@ -1,0 +1,28 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "farhan",
+            "password": "password123",
+            "confirmPassword": "password123"
+        },
+        {
+            "id": 2,
+            "username": "aswanth",
+            "password": "password123",
+            "confirmPassword": "password123"
+        },
+        {
+            "id": 3,
+            "username": "ibrahim",
+            "password": "password123",
+            "confirmPassword": "password123"
+        },
+        {
+            "id": 4,
+            "username": "abbubakar",
+            "password": "password123",
+            "confirmPassword": "password123"
+        }
+    ]
+}

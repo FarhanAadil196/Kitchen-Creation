@@ -16,6 +16,13 @@ const Wrapper = styled.nav`
     width: 100%;
     background: #e3f0af;
     font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 
     .nav-1 {
       width: 100%;
@@ -223,8 +230,7 @@ const Wrapper = styled.nav`
 
       li {
         width: 100%;
-    display: flex
-;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
@@ -257,11 +263,11 @@ const Wrapper = styled.nav`
     }
       .close{
         border:none;
-        border-radius:50%;
+        // border-radius:50%;
         box-shadow:0 0 5px 4px rgba(0,0,0,0.1);
           }
         .name{
-            width: 110px;
+            width: 100px;
           }
 
     @media (max-width: 768px) {
@@ -292,7 +298,7 @@ const Wrapper = styled.nav`
     bottom: 0;
     z-index: 1000;
     display: none;
-
+box-shadow: 0px -5px 20px #00000057;
     @media (max-width: 768px) {
     display: block;
     }
@@ -417,7 +423,9 @@ function Navbar() {
                       </button>
                     </div>
                     <span>Price: ₹{item.mprice}</span>
-                    <button onClick={() => handleRemoveItem(item.id)}>❌</button>
+                    <button onClick={() => handleRemoveItem(item.id)}>
+                      ❌
+                    </button>
                   </li>
                 ))}
               </ul>

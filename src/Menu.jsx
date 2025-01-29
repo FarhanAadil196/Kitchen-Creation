@@ -11,7 +11,7 @@ const Wrapper = styled.div`.Menu {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: hsl(90deg 42% 52% / 16%);
+    // background: hsl(90deg 42% 52% / 16%);
     position: relative;
     h1 {
       color: black;
@@ -64,7 +64,9 @@ width:100%;
 height:150px;
 background-color:grey;
 padding: 10px;
-border-radius: 10px;
+// border-radius: 10px;
+border-top-right-radius: 10px;
+border-top-left-radius: 10px;
 
 img {
           height: 100%;

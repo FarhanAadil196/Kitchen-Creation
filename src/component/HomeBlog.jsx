@@ -3,10 +3,12 @@ import Styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const Wrapper = Styled.div`
-.blog-t{
-text-align:center;
-margin:30px;
-}
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:30px;
+background: hsl(90deg 42% 52% / 16%);
 .home-blog{
 display:flex;
 align-items:center;
