@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Hero from "./component/Hero";
 import Footer from "./component/Footer";
 
-
 const Wrapper = styled.nav`
   .about-c {
     // background-image: url(./aboutbg.png);
@@ -52,36 +51,50 @@ const aboutdata = [
     id: 1,
     image: "./aboutimg1.png",
     title: "About Us",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-    direction:"row-reverse",
-    color:"blue"
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+    direction: "row-reverse",
+    color: "blue",
   },
   {
     id: 2,
-    image: "./aboutimg.jpg",
+    image: "./aboutbg.jpg",
     title: "About Us",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-    direction:"row",
-    color:"red"
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+    direction: "row",
+    color: "red",
   },
   {
     id: 3,
     image: "./aboutimg2.jpg",
     title: "About Us",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-    direction:"row-reverse",
-    color:"brown"
-  }
-]
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
+    direction: "row-reverse",
+    color: "brown",
+  },
+];
 function Aboutpage() {
   return (
     <Wrapper>
       <Navbar />
       <Hero />
       {aboutdata.map((item, index) => (
-        <div key={index} className="about-c" style={{ backgroundColor: item.color, flexDirection: item.direction}}>
-<div className="img-c" style={{ backgroundImage: `url(${item.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>      
-    <div className="a-para">
+        <div
+          key={index}
+          className="about-c"
+          style={{ backgroundColor: item.color, flexDirection: item.direction }}
+        >
+          <div
+            className="img-c"
+            style={{
+              backgroundImage: `url(${item.image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
+          <div className="a-para">
             <h4>{item.title}</h4>
             <p className="para">{item.description}</p>
           </div>
@@ -90,6 +103,6 @@ function Aboutpage() {
       <Footer />
     </Wrapper>
   );
-};
+}
 
 export default Aboutpage;

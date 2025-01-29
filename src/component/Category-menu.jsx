@@ -66,7 +66,7 @@ const Wrapper = styled.div`
         align-items: center;
 
         height: 200px;
-        width: 300px;
+        width: 250px;
         border-radius: 10px;
         border: 3px solid #5db996;
         .cat-img {

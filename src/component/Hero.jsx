@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   .hero {
     width: 100%;
-    height: 30vh;
+    height: 50vh;
     background: url(${props => props.backgroundImage});
     display: flex;
     justify-content: center;
