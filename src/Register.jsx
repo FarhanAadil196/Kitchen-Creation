@@ -1,6 +1,10 @@
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { auth,db } from "./firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 
 const Wrapper = styled.div`
@@ -84,9 +88,7 @@ const Wrapper = styled.div`
     }
   }
 
-  #signup {
-    display: none;
-  }
+
 
   /* Responsive Design */
   @media (max-width: 600px) {
@@ -107,52 +109,95 @@ const Wrapper = styled.div`
     }
   }
 `;
-
-function Login() {
+function Register() {
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      console.log(user);
+      if(user){
+        await setDoc(doc(db, "users", user.uid), {
+            email: user.email,
+          fname: fname,
+          lname: lname,
+        });
+      }
+      console.log("User signed up successfully");
+      toast.success("User signed up successfully", {position:"top-center",});
+
+    } catch (error) {
+      setError(error.message);
+      toast.success(error.message, {position :"bottom-center",});
+    }
+  };
   return (
     <Wrapper>
-      <div className="forms">
-        <div className="login" id="login">
-          <h1>Log In</h1>
+     <div className="forms">
+        <div className="login" id="signup">
+          <h1>Sign Up</h1>
           <div className="loginform">
             <div className="image-container"></div>
-            <form>
-              <label htmlFor="email">Email</label>
+            <form onSubmit={handleSignup} autoComplete="on">
+              <label>First name:</label>
+              <input
+                type="text"
+                id="fname"
+                name="fname"
+                value={fname}
+                onChange={(e) => setFname(e.target.value)}
+                required
+              />
+              <label>Last name:</label>
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                value={lname}
+                onChange={(e) => setLname(e.target.value)}
+                required
+              />
+              <label>Email:</label>
               <input
                 type="email"
-                placeholder="Email"
+                id="Email"
+                name="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
-              <label htmlFor="password">Password</label>
+              <label>Password:</label>
               <input
                 type="password"
-                placeholder="Password"
+                id="password"
+                name="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)} />
-
-              <button type="submit">Log In</button>
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button type="submit">Register</button>
               <p>
-                Don't have an account?
-                <Link to="/Register">
-                <span className="button">
-                  Sign Up
-                </span>
+                Already have an account?{" "}
+                <Link to="/login">
+                  <span className="button">Log In</span>
                 </Link>
               </p>
-            
             </form>
           </div>
         </div>
-
-        
       </div>
     </Wrapper>
   );
 }
 
-export default Login;
-
+export default Register;

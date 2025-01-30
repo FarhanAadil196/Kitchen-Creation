@@ -59,7 +59,7 @@ function Footer() {
           <Link to="/menu">
             <li>Menu</li>
           </Link>
-          <Link to="/category">
+          <Link to="/Category">
             <li>Category</li>
           </Link>
           <Link to="/order">

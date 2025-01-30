@@ -87,7 +87,7 @@ function HomeService() {
                         <img src={item.image} alt={item.service} />
                         <h3>{item.service}</h3>
                         <p>{item.content}</p>
-                        <Link to="/services">{item.link}</Link>
+                        <Link to="/Services">{item.link}</Link>
                     </div>
                 ))}
             </div>

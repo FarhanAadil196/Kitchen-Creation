@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   .hero {
     width: 100%;
-    height: 50vh;
+    height: 30vh;
     background: url(${props => props.backgroundImage});
     display: flex;
     justify-content: center;
@@ -18,6 +18,13 @@ const Wrapper = styled.div`
       color:white;
       }
   }
+      @media (max-width: 480px) {
+        .hero{
+          height: 20vh;
+          
+        }
+      }
+}
 
 `;
 
@@ -41,7 +48,7 @@ function Hero() {
   return (
     <Wrapper backgroundImage={images[currentImage]}>
       <div className="hero">
-        <h2>{`Home/${window.location.pathname.split("/")[1]}`}</h2>
+        <h2>{`Home / ${window.location.pathname.split("/")[1]}`}</h2>
       </div>
     </Wrapper>
   );

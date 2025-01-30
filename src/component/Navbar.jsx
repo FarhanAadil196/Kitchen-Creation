@@ -20,8 +20,7 @@ const Wrapper = styled.nav`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 0;
+ 
     z-index: 1000;
 
     .nav-1 {
@@ -352,11 +351,13 @@ function Navbar() {
             </h5>
           </div>
           <div className="right">
-            <Link to="/about">
+            <Link to="/About">
               <h5>About Us</h5>
             </Link>
+            <Link to="/Contact">
             <h5>Contact</h5>
-            <Link to="/login">
+            </Link>
+            <Link to="/Login">
               <h5>Login/SignUp</h5>
             </Link>
           </div>
@@ -367,10 +368,10 @@ function Navbar() {
             <Link to="/">
               <li>Home</li>
             </Link>
-            <Link to="/category">
+            <Link to="/Category">
               <li>Categories</li>
             </Link>
-            <Link to="/menu">
+            <Link to="/Menu">
               <li>Menu</li>
             </Link>
           </ul>
@@ -436,7 +437,7 @@ function Navbar() {
                   0
                 )}
               </p>
-              <Link to="/checkout">
+              <Link to="/Checkout">
                 <button onClick={() => setCartModal(false)}>Checkout</button>
               </Link>
             </>
@@ -461,13 +462,13 @@ function Navbar() {
                 Menu
               </li>
             </Link>
-            <Link to="/category">
+            <Link to="/Category">
               <li>
                 <img src="./Cate.svg" alt="" />
                 Category
               </li>
             </Link>
-            <Link to="/login">
+            <Link to="/Login">
               <li>
                 <img src="./login.svg" alt="" />
                 Login

@@ -10,6 +10,11 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     flex-direction: column;
   }
+    .name{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    }
   form {
     display: flex;
     justify-content: center;
@@ -19,58 +24,64 @@ const Wrapper = styled.div`
     padding: 10px;
   }
   input {
-    width: 300px;
+    width: 100%;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid gray;
-    outline:none;
+    outline: none;
   }
   select {
-    width: 300px;
+    width: 100%;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid gray;
-    outline:none;
+    outline: none;
   }
   textarea {
-    width: 300px;
+    width: 100%;
     padding: 10px;
     border-radius: 10px;
     border: 1px solid gray;
-    outline:none;
+    outline: none;
   }
   button {
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      background-color: #4caf50;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 
-      &:hover {
-        background-color: #45a049;
-      }
-}
+    &:hover {
+      background-color: #45a049;
+    }
+  }
 `;
 
 function Contact() {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
+  const [lastName, setLastName] = useState("");
   const [foodType, setFoodType] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(firstName, email, foodType, message);
-   if(firstName && email && foodType && message){
-    alert("Form submitted successfully");
-    setFirstName("");
-    setEmail("");    
-    setFoodType("");
-    setMessage("");
-   }
+
+    if (firstName && email && foodType && message) {
+      alert("Form submitted successfully");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setFoodType("");
+      setMessage("");
+    }
+    else{
+      alert("Please fill all the fields");
+    }
   };
 
   return (
@@ -79,13 +90,26 @@ function Contact() {
         <h1>Contact</h1>
         <div className="form">
           <form onSubmit={handleSubmit}>
-            <label>First Name:</label>
-            <input
-              type="text"
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
+            <div className="name">
+              <div className="fname">
+                <label>First Name:</label>
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </div>
+              <div className="lname">
+                <label>Last Name:</label>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </div>
+            </div>
             <label>Email:</label>
             <input
               type="email"
@@ -94,15 +118,18 @@ function Contact() {
               onChange={(e) => setEmail(e.target.value)}
             />
             <label>Food Type:</label>
-            <select value={foodType} onChange={(e) => setFoodType(e.target.value)}>
-                <option value="Select">Food Type</option>
+            <select
+              value={foodType}
+              onChange={(e) => setFoodType(e.target.value)}
+            >
+              <option value="Select">Food Type</option>
               <option value="veg">Veg</option>
               <option value="non-veg">Non-Veg</option>
               <option value="both">Both</option>
             </select>
-            <label>Message:</label>
+            <label>Message/Suggestion:</label>
             <textarea
-              placeholder="Message"
+              placeholder="Message / Suggestions"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />

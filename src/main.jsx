@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
+
 import Homepage from "./Homepage.jsx";
 import Menupage from "./Menupage.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -14,7 +14,9 @@ import Login from "./Login.jsx";
 import ServicePage from "./ServicePage.jsx";
 import BlogPage from "./BlogPage.jsx";
 import ContactPage from "./ContactPage.jsx";
+
 import Users from "./Users.jsx";
+import Register from "./Register.jsx";
 
 
 createRoot(document.getElementById("root")).render(
@@ -23,15 +25,16 @@ createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <Routes>
           <Route path="" element={<Homepage />} />
-          <Route path="/menu" element={<Menupage />} />
-          <Route path="/category" element={<CategoryPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/about" element={<Aboutpage/>}/>
-          <Route path="/login" element={<Login/>} />
-          <Route path="/services" element={<ServicePage/>} />
-          <Route path="/blogs" element={<BlogPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/Menu" element={<Menupage />} />
+          <Route path="/Category" element={<CategoryPage />} />
+          <Route path="/Checkout" element={<CheckoutPage />} />
+          <Route path="/About" element={<Aboutpage/>}/>
+          <Route path="/Login" element={<Login/>} />
+          <Route path="/Register" element={<Register/>} />
+          <Route path="/Services" element={<ServicePage/>} />
+          <Route path="/Blogs" element={<BlogPage />} />
+          <Route path="/Contact" element={<ContactPage />} />
+          <Route path="/Users" element={<Users />} />
         </Routes>
       </BrowserRouter>
     </Provider>

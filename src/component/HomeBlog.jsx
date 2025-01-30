@@ -101,7 +101,7 @@ function HomeBlog() {
     <div className="blog-post-content">
       <h2>{item.title}</h2>
       <p>{item.content}</p>
-      <Link to="/blogs"><button>Read More</button></Link>
+      <Link to="/Blogs"><button>Read More</button></Link>
     </div>
   </div>
 ))}
