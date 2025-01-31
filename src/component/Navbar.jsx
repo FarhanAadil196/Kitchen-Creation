@@ -375,11 +375,10 @@ function Navbar() {
               <li>Menu</li>
             </Link>
           </ul>
-          <div className="cart">
+          <div className="cart" onClick={() => setCartModal(!cartModal)}>
             <img
               src="./cart.svg"
               alt="Cart"
-              onClick={() => setCartModal(!cartModal)} // Toggle cart modal visibility
               title="View Cart"
             />
             <span>{cartItems.length}</span>

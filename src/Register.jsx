@@ -132,6 +132,7 @@ function Register() {
             email: user.email,
           fname: fname,
           lname: lname,
+          password: password,
         });
       }
       console.log("User signed up successfully");

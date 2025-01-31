@@ -113,7 +113,7 @@ function CheckoutForm() {
       formData.paymentMethod
     ) {
       setSubmitted(true);
-      clearCart(); // Clear the cart after successful submission
+      clearCart(); 
     } else {
       alert("Please fill in all required fields correctly.");
     }
