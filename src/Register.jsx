@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { auth,db } from "./firebase";
 import { doc, setDoc } from "firebase/firestore";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 
 const Wrapper = styled.div`
@@ -16,6 +18,7 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     padding: 20px;
+
   }
 
   .login {
@@ -88,8 +91,6 @@ const Wrapper = styled.div`
     }
   }
 
-
-
   /* Responsive Design */
   @media (max-width: 600px) {
     .login {
@@ -134,70 +135,78 @@ function Register() {
         });
       }
       console.log("User signed up successfully");
-      toast.success("User signed up successfully", {position:"top-center",});
+      toast.success("User signed up successfully", {
+        position: "top-center",
+      });
 
     } catch (error) {
-      setError(error.message);
-      toast.success(error.message, {position :"bottom-center",});
+      setError(error);
+      toast.error(error.message, {
+        position: "bottom-center",
+      });
     }
   };
   return (
-    <Wrapper>
-     <div className="forms">
-        <div className="login" id="signup">
-          <h1>Sign Up</h1>
-          <div className="loginform">
-            <div className="image-container"></div>
-            <form onSubmit={handleSignup} autoComplete="on">
-              <label>First name:</label>
-              <input
-                type="text"
-                id="fname"
-                name="fname"
-                value={fname}
-                onChange={(e) => setFname(e.target.value)}
-                required
-              />
-              <label>Last name:</label>
-              <input
-                type="text"
-                id="lname"
-                name="lname"
-                value={lname}
-                onChange={(e) => setLname(e.target.value)}
-                required
-              />
-              <label>Email:</label>
-              <input
-                type="email"
-                id="Email"
-                name="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <label>Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <button type="submit">Register</button>
-              <p>
-                Already have an account?{" "}
-                <Link to="/login">
-                  <span className="button">Log In</span>
-                </Link>
-              </p>
-            </form>
+    <>
+      <ToastContainer />
+      <Wrapper>
+        <div className="forms">
+          <div className="login" id="signup">
+            <h1>Sign Up</h1>
+            <div className="loginform">
+              <div className="image-container"></div>
+              <form onSubmit={handleSignup} autoComplete="on">
+                <label>First name:</label>
+                <input
+                  type="text"
+                  id="fname"
+                  name="fname"
+                  value={fname}
+                  onChange={(e) => setFname(e.target.value)}
+                  required
+                />
+                <label>Last name:</label>
+                <input
+                  type="text"
+                  id="lname"
+                  name="lname"
+                  value={lname}
+                  onChange={(e) => setLname(e.target.value)}
+                  required
+                />
+                <label>Email:</label>
+                <input
+                  type="email"
+                  id="Email"
+                  name="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <label>Password:</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <button type="submit">Register</button>
+                <p>
+                  Already have an account?{" "}
+                  <Link to="/login">
+                    <span className="button">Log In</span>
+                  </Link>
+                </p>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+    </>
   );
 }
 
 export default Register;
+

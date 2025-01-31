@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebase";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Wrapper = styled.div`
+
   .forms {
     width: 100%;
     min-height: 100vh;
@@ -111,15 +115,35 @@ const Wrapper = styled.div`
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("User signed in successfully");
+      toast.success("User signed in successfully", {
+        position: "top-right",
+      });
+      navigate("/");
+
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error.message, {
+        position: "bottom-center",
+      });
+    }
+  };
   return (
+    <>
+       <ToastContainer />
     <Wrapper>
       <div className="forms">
         <div className="login" id="login">
           <h1>Log In</h1>
           <div className="loginform">
             <div className="image-container"></div>
-            <form>
+            <form onSubmit={handleSubmit} autoComplete="on">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -147,10 +171,10 @@ function Login() {
             </form>
           </div>
         </div>
-
-        
       </div>
     </Wrapper>
+    </>
+   
   );
 }
 
